@@ -18,19 +18,27 @@ $(document).ready(function(){
       responseImage.src=responseMeal.meals[0].strMealThumb;
       $("h4#name").text(responseMeal.meals[0].strMeal);
       $("p#instructions").text(responseMeal.meals[0].strInstructions);
-      debugger;
+      // debugger;
 
 
       let meal = responseMeal.meals[0];
-      let ingredientLists = Object.entries(meal);
-      for (var i = 0; i < ingredientLists.length; i++) {
-        let ingredientKeyPairs = ingredientLists[i];
-        if ((ingredientKeyPairs[0].includes("strIngredient") && ingredientKeyPairs[1].length > 1) || (ingredientKeyPairs[0].includes("strIngredient") && ingredientKeyPairs[1] !== null)) {
-          $("ul#ingredients").append(
-              `<li>${ingredientKeyPairs[1]}</li>`
-          );
+      console.log(meal);
+      // let ingredientLists = Object.entries(meal);
+      // for (var i = 0; i < ingredientLists.length; i++) {
+      //   let ingredientKeyPairs = ingredientLists[i];
+      //   if ((ingredientKeyPairs[0].includes("strIngredient") && ingredientKeyPairs[1] !== "") || (ingredientKeyPairs[0].includes("strIngredient") && ingredientKeyPairs[1] !== null)) {
+      //     $("ul#ingredients").append(
+      //         `<li>${ingredientKeyPairs[1]}</li>`
+      //     );
+      //   }
+      // }
+
+      for (let ingredient in meal) {
+        if (ingredient.includes("strIngredient") && meal[ingredient] !== "") {
+          $("ul#ingredients").append(`<li>${meal[ingredient]}</li>`);
         }
       }
+
 
 
       // responseMeal.meals[0].forEach(function(item) {
