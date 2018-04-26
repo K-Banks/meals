@@ -41,6 +41,7 @@ $(document).ready(function(){
 
   $("form#mainIngredient").submit(function(event) {
     event.preventDefault();
+    $("div.wrapper").empty();
     let searchString = $("input.inputField").val();
     $("input.inputField").val("");
     let ingredientCall = new API();
