@@ -52,8 +52,10 @@ $(document).ready(function(){
       responseMeals.meals.forEach(function(meal) {
         $("div.wrapper").append(
           `<div class="card thumbnail">
-            <img class="card-img-top image" src="${meal.strMealThumb}" alt="image of ${meal.strMeal}">
-            <h4 class="card-title name">${meal.strMeal}</h4>
+            <span id="${meal.idMeal}" class="takeMeThere">
+              <img class="card-img-top image" src="${meal.strMealThumb}" alt="image of ${meal.strMeal}">
+              <h4 class="card-title name">${meal.strMeal}</h4>
+            </span>
           </div>`
         )
       });
