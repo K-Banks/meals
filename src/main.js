@@ -60,8 +60,33 @@ $(document).ready(function(){
         );
         $("span.takeMeThere").last().on('click', function(event) {
           event.preventDefault();
+          let id = this.id;
+          let idCall = new API();
+          let promiseID = idCall.requestIdAPI(id);
+
+          promiseID.then(function(response) {
+            $(".recipe").show();
+            let responseMeal = response;
+            let meal = responseMeal.meals[0];
+            let ingredientArray = dataCall.ingredientCompiler(meal);
+            let measurementArray = dataCall.measurementCompiler(meal);
+
+            let responseImage = document.getElementById("image");
+            responseImage.src=responseMeal.meals[0].strMealThumb;
+            $("h4#name").text(responseMeal.meals[0].strMeal);
+            $("p#instructions").text(responseMeal.meals[0].strInstructions);
+
+            for (var i = 0; i < ingredientArray.length; i++) {
+              $("ul#ingredients").append(
+                `<li>${measurementArray[i]} ${ingredientArray[i]}</li>`
+              )
+            }
+          }, function(error) {
+            $("div.error").text("There has been an error: " + error);
+            $("div.error").show();
+          });
           console.log("you clicked me!!");
-          console.log("This is the meal id: " + this.id);
+          console.log("This is the promise ID: " + promiseID);
         });
 
       });
