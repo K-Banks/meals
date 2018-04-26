@@ -7,7 +7,8 @@ class API {
       xhr.send();
       xhr.onload = function() {
         if (this.status === 200) {
-          resolve(xhr.response);
+          let response = JSON.parse(xhr.response);
+          resolve(response);
         } else {
           reject(Error(xhr.statusText));
         }
