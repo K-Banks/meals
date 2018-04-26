@@ -48,13 +48,14 @@ $(document).ready(function(){
     let promiseMeals = ingredientCall.requestIngredientAPI(searchString);
 
     promiseMeals.then(function(responseMeals) {
-      $(".thumbnail").show();
-      let responseImage = document.getElementById("targetME");
-      debugger;
-      responseImage.src = responseMeals.meals[0].strMealThumb;
-
-      console.log("Here is the response" + response);
-      console.log("Here is the first meal" + response.meals[0]);
+      responseMeals.meals.forEach(function(meal) {
+        $("div.wrapper").append(
+          `<div class="card thumbnail">
+            <img class="card-img-top image" src="${meal.strMealThumb}" alt="image of ${meal.strMeal}">
+            <h4 class="card-title name">${meal.strMeal}</h4>
+          </div>`
+        )
+      });
     }, function(error) {
       console.log("There was an error " + error);
     });
