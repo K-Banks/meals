@@ -58,12 +58,10 @@ $(document).ready(function(){
             </span>
           </div>`
         );
-        $("div.thumbnail").last().on('click', function(event) {
-          // debugger;
+        $("span.takeMeThere").last().on('click', function(event) {
           event.preventDefault();
-          // let spanTarget = this.getElementsByClassName("takeMeThere";)
           console.log("you clicked me!!");
-          console.log("This is the meal id: " + spanTarget.id);
+          console.log("This is the meal id: " + this.id);
         });
 
       });
