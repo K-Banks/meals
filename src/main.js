@@ -57,10 +57,20 @@ $(document).ready(function(){
               <h4 class="card-title name">${meal.strMeal}</h4>
             </span>
           </div>`
-        )
+        );
+        $("div.thumbnail").last().on('click', function(event) {
+          // debugger;
+          event.preventDefault();
+          // let spanTarget = this.getElementsByClassName("takeMeThere";)
+          console.log("you clicked me!!");
+          console.log("This is the meal id: " + spanTarget.id);
+        });
+
       });
     }, function(error) {
       console.log("There was an error " + error);
     });
   });
+
+
 });
