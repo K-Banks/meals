@@ -8,12 +8,13 @@ import { API } from './api.js';
 $(document).ready(function(){
   $("form#randomMeal").submit(function(event) {
     event.preventDefault();
+    $("div.error").hide();
     $("ul#ingredients").empty();
-    $(".recipe").show();
     let randomCall = new API();
     let promiseMeal = randomCall.requestRandomAPI();
 
     promiseMeal.then(function(response) {
+      $(".recipe").show();
       let responseMeal = JSON.parse(response);
       let responseImage = document.getElementById("image");
       responseImage.src=responseMeal.meals[0].strMealThumb;
@@ -42,13 +43,9 @@ $(document).ready(function(){
         )
       }
 
-      console.log("Ingredient Array" + ingredientArray);
-      console.log("Measurement Array" + measurementArray);
-      console.log("The response is: " + responseMeal.meals[0].strMeal);
-      console.log("The response is: " + responseMeal.meals[0].strMealThumb);
-      console.log("The response is: " + responseMeal.meals[0].strInstructions);
     }, function(error) {
-      console.log("There has been an error" + error);
+      $("div.error").text("There has been an error: " + error);
+      $("div.error").show();
     });
   });
 });
