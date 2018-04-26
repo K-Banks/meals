@@ -5,8 +5,11 @@
     <title>Meals DB</title>
   </head>
   <body>
-    <form id="randomMeal">
-      <button type="submit" class="button">Random Meal!</button>
+    <button type="button" class="button" id="randomMeal">Random Meal!</button>
+    <form id="mainIngredient">
+      <label for="mainIngredient">Search by main ingredient.</label>
+      <input type="text" name="mainIngredient" value="" class="inputField">
+      <button type="submit" class="button">Search</button>
     </form>
     <div class="card recipe">
       <img class="card-img-top" src="" id="image">
@@ -17,6 +20,12 @@
         </ul>
         <h5>Instructions</h5>
         <p class="card-text" id="instructions">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="card thumbnail">
+        <img class="card-img-top image" src="" alt="image of" id="targetME">
+        <h4 class="card-title name">Card Title</h4>
       </div>
     </div>
     <div class="card error">

@@ -7,7 +7,7 @@ import { API } from './api.js';
 import { Data } from './data.js';
 
 $(document).ready(function(){
-  $("form#randomMeal").submit(function(event) {
+  $("button#randomMeal").click(function(event) {
     event.preventDefault();
     $("div.error").hide();
     $("ul#ingredients").empty();
@@ -36,6 +36,27 @@ $(document).ready(function(){
     }, function(error) {
       $("div.error").text("There has been an error: " + error);
       $("div.error").show();
+    });
+  });
+
+  $("form#mainIngredient").submit(function(event) {
+    event.preventDefault();
+    let searchString = $("input.inputField").val();
+    $("input.inputField").val("");
+    let ingredientCall = new API();
+    let dataCall = new Data();
+    let promiseMeals = ingredientCall.requestIngredientAPI(searchString);
+
+    promiseMeals.then(function(responseMeals) {
+      $(".thumbnail").show();
+      let responseImage = document.getElementById("targetME");
+      debugger;
+      responseImage.src = responseMeals.meals[0].strMealThumb;
+
+      console.log("Here is the response" + response);
+      console.log("Here is the first meal" + response.meals[0]);
+    }, function(error) {
+      console.log("There was an error " + error);
     });
   });
 });
